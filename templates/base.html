@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+		<!--<script src="{{ url_for('static', filename='js/getdata.js') }}"></script>-->
+		<title>JIRA ISSUE TRACKER</title>
+	</head>
+	<body>
+	        <div class="container">
+	                <div class="header">
+	                    <h1 style="text-align: center;" class=" ta">JIRA Issue Tracker</h1>
+	                </div>
+	         <div class="container" align="center">
+	                    <h3 style="text-align: center;">Welcome {{user}}</h3>
+	          </div>
+	<div align="right" style="margin-right: 100px">
+		<a href="/logout">Logout</a>
+	</div>
+	<br>
+	{% block content %}
+	
+	{% endblock %}
+	<!--<div id="successAlert" class="alert alert-success" role="alert" style="display:none;"></div>-->
+	<!--<div id="errorAlert" class="alert alert-danger" role="alert" style="display:none;"></div>-->
+	</div>
+	</body>
+</html>

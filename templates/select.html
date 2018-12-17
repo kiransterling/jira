@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div align="center">
+		<form action='/home' method="POST" >
+		    <p><select name="dropdown">
+				<option value="GetIncidentlist">Get Incident List</option>
+				<option value="Incident" selected>Get Incident Details</option>
+			</select>
+			<input type = "submit" value = "Submit"/>
+		    </p>
+			
+		</form>
+	</div>
+{% endblock %}	
+	

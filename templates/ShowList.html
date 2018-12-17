@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div align="center">
+      {% if  isdata==0 %}
+	  <h2>No incident Found</h2>
+	  {% else %}
+	     
+	  <h4 style="color:blue"> Data From PagerDuty Table </h4>
+	  <br>
+      <table border = 3>
+	  
+	    <tr>
+		<th style="text-align:center">PagerDutyIncidentNumber</th>
+		<th style="text-align:center">Opened</th>
+		<th style="text-align:center">JiraIncidentNumber</th>
+		</tr>
+		{% for post in posts %}
+	     <tr>
+               <td style="text-align:center"> {{ post.PagerDutyIncidentNumber }} </th>
+               <td style="text-align:center"> {{ post.Opened }} </td>
+			   <td style="text-align:center"><a href = "{{ url_for('processdata', _method='GET', issue_no=post.JiraIncidentNumber ) }}">{{ post.JiraIncidentNumber }} </th>
+            </tr>
+         {% endfor %}
+      </table>
+	{% endif %}
+  </div>
+{% endblock %}

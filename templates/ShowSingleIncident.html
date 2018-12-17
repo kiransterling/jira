@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div align="center">
+      {% if  isdata==0 %}
+	  <h2>No incident Found with No : {{ posts }}</h2>
+	  {% else %}
+      <h2> Incident Number : {{ posts.pagerdutydata.PagerDutyIncidentNumber }} </h2>
+	  <br>
+	  <h4 style="color:blue"> Data From PagerDuty </h4>
+	  <br>
+      <table border = 3>
+	  
+	    <tr>
+		<th style="text-align:center">PagerDutyIncidentNumber</th>
+		<th style="text-align:center">Opened</th>
+		<th style="text-align:center">Bulletin</th>
+		<th style="text-align:center">JiraIncidentNumber</th>
+		<th style="text-align:center">SlackChannelNumber</th>
+		</tr>
+	     <tr>
+               <td style="text-align:center"> {{ posts.pagerdutydata.PagerDutyIncidentNumber }} </th>
+               <td style="text-align:center"> {{ posts.pagerdutydata.Opened }} </td>
+			   <td style="text-align:center"> {{ posts.pagerdutydata.Bulletin }} </th>
+			   <td style="text-align:center"> {{ posts.pagerdutydata.JiraIncidentNumber }} </th>
+			   <td style="text-align:center"> {{ posts.pagerdutydata.SlackChannelNumber }} </th>
+            </tr>
+			<tr>
+        <th style="text-align:center">UpdatedBy</th>
+		<th style="text-align:center">PagerDutyDataTime</th>
+		<th style="text-align:center">ImpactedServices</th>
+		<th style="text-align:center">AssignedTo</th>
+		<th style="text-align:center">CurrentStatus</th>
+
+			</tr>
+          {% for post in posts.pagerdutydata.Comments %} 
+         
+            <tr>
+               <td style="text-align:center"> {{ post.UpdatedBy }} </td>
+               <td style="text-align:center"> {{ post.PagerDutyDataTime }} </td>
+			   <td style="text-align:center"> {{ post.ImpactedServices }} </td>
+			   <td style="text-align:center"> {{ post.AssignedTo }} </td>
+			   <td style="text-align:center"> {{ post.CurrentStatus }} </td>
+            </tr>
+            
+         {% endfor %}
+      </table>
+	  
+	  <br>
+	  <h4 style="color:blue"> Data From JIRA </h4>
+	  <br>
+	  {% if  posts.jiradata!=0 %}
+      <table border = 3>
+	  <tr>
+		<th style="text-align:center">DisplayName</th>
+		<th style="text-align:center">Email Address</th>
+		<th style="text-align:center">Created At</th>
+		<th style="text-align:center">Updated At</th>
+		<th style="text-align:center">Comments</th>
+		</tr>
+		 {% for post in posts.jiradata %} 
+         
+            <tr>
+               <td style="text-align:center"> {{ post.displayName }} </td>
+               <td style="text-align:center"> {{ post.emailAddress }} </td>
+			   <td style="text-align:center"> {{ post.created }} </td>
+			   <td style="text-align:center"> {{ post.updated }} </td>
+			   <td style="text-align:center"> {{ post.body }} </td>
+            </tr>
+            
+         {% endfor %}
+	</table>
+    {% endif %}	
+    {% endif %}
+  </div>
+  
+{% endblock %}
