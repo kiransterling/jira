@@ -58,6 +58,7 @@
 		<th style="text-align:center">Created At</th>
 		<th style="text-align:center">Updated At</th>
 		<th style="text-align:center">Comments</th>
+		<th style="text-align:center">Alert Type</th>
 		</tr>
 		 {% for post in posts.jiradata %} 
          
@@ -67,6 +68,7 @@
 			   <td style="text-align:center"> {{ post.created }} </td>
 			   <td style="text-align:center"> {{ post.updated }} </td>
 			   <td style="text-align:center"> {{ post.body }} </td>
+			   <td style="text-align:center"> {{ post.type }} </td>
             </tr>
             
          {% endfor %}
