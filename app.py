@@ -32,12 +32,6 @@ def ldapAuth():
     POST_USERNAME = str(request.form['username'])
     POST_PASSWORD = str(request.form['password'])
 
-    session['username'] = str(POST_USERNAME)
-    session['email'] = str(POST_USERNAME)
-    session['logged_in'] = True
-    return redirect(url_for('home_page'))
-
-
     server = Server('ldap://bluepages.ibm.com', get_info=ALL)
     c = Connection(server, user="", password="", raise_exceptions=False)
     noUseBool = c.bind()
@@ -64,9 +58,9 @@ def ldapAuth():
 
     # now search group
     checkIfAdminGroup = c.search(search_base = 'cn=RSC_B2B,ou=memberlist,ou=ibmgroups,o=ibm.com',
-     search_filter = '(uniquemember=%s)'%(str(uniqueID)),
-     search_scope = SUBTREE,
-     attributes = ['dn'])
+    search_filter = '(uniquemember=%s)'%(str(uniqueID)),
+    search_scope = SUBTREE,
+    attributes = ['dn'])
     checkIfAdminGroup=True
 	 
     if(checkIfAdminGroup==False):
@@ -139,4 +133,4 @@ if __name__ == '__main__':
     app.config['SESSION_TYPE'] = 'filesystem'
     sess = Session()
     sess.init_app(app)
-    app.run(host='0.0.0.0',port=8888,debug=True)
+    app.run(ssl_context=('cert.pem', 'key.pem'),host='0.0.0.0',port=8888,debug=True)

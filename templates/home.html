@@ -4,13 +4,13 @@
 
 <div align="center">
   {% if  options=="Incident" %}
-		<form action='/processdata' method="POST" >
+		<form  action='/processdata' method="POST" >
 		    <p><h3>Enter Incident Number </h3><input type="text" name="issue_no" placeholder="JIRA Issue Number" required="" autofocus="" >
 		    <input type='submit' value='Get Issue Details'>
 		    </p>
 		</form>
 	{% else %}
-	<form action='/list' method="POST" >
+	<form  action='/list' method="POST" >
 		    <p><h3>Enter Recent Number Of Incidents want to see </h3><input type="text" name="number" placeholder="Enter a Number" required="" autofocus="" >
 		    <input type='submit' value='Sumbit'>
 		    </p>

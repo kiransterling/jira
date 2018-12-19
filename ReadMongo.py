@@ -16,7 +16,7 @@ def getDBCollection():
 
 
 def MongoRead(incident_no):
-    collection = collection=getDBCollection()
+    collection = getDBCollection()
     data={}
     cursor = collection.find({"JiraIncidentNumber": incident_no})
     if cursor.count()==0:

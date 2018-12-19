@@ -4,6 +4,8 @@ import re
 
 def bodyparser(text):
     text=text.replace('\n',' ')
+    if '{panel} +Details:+' not in text:
+        return text,'NA'
     #print (text)
     filter_text=text.replace(' {panel} +Details:+', '')
     temp=re.search(r'\{(.*)\}', filter_text)
